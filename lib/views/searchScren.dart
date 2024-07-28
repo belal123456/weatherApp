@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Searchscren extends StatelessWidget {
-  const Searchscren({super.key});
+  String? cityName;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,9 @@ class Searchscren extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Center(
           child: TextField(
+            onSubmitted: (Data1) {
+              cityName = Data1;
+            },
             decoration: InputDecoration(
                 label: const Text("city"),
                 hintText: "entre your city",

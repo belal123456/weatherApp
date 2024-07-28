@@ -50,7 +50,7 @@ class Homescreen extends StatelessWidget {
                         return Searchscren();
                       }));
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.search,
                       size: 32,
                       color: Colors.amber,
