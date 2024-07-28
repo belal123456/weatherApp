@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weather/services.dart/weatherService.dart';
 
 class Searchscren extends StatelessWidget {
   String? cityName;
@@ -20,6 +21,8 @@ class Searchscren extends StatelessWidget {
           child: TextField(
             onSubmitted: (Data1) {
               cityName = Data1;
+              WeatherService service = WeatherService();
+              service.getWeather(cityName: cityName!);
             },
             decoration: InputDecoration(
                 label: const Text("city"),
@@ -27,9 +30,9 @@ class Searchscren extends StatelessWidget {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(32),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.amber)),
-                suffixIcon: Icon(
+                suffixIcon: const Icon(
                   Icons.location_city,
                   size: 32,
                 )),
