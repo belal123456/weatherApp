@@ -7,20 +7,7 @@ class WeatherService {
 
   Future<Map<String, dynamic>?> getWeather({required String cityName}) async {
     Uri url = Uri.parse("$baseUrl/current.json?key=$apiKey&q=$cityName&aqi=no");
-
-    try {
-      http.Response response = await http.get(url);
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body);
-      } else {
-        print(
-            'Failed to load weather data with status code: ${response.statusCode}');
-        return null;
-      }
-    } catch (e, stacktrace) {
-      print('Error occurred while fetching weather data: $e');
-      print('Stacktrace: $stacktrace');
-      return null;
-    }
+    http.Response response = await http.get(url);
+    print(response.body);
   }
 }
