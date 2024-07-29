@@ -24,4 +24,9 @@ class Weathermodel {
         humdity: jsonData["current"]["humidity"],
         maxtemp: jsonData["forecast"]["forecastday"][0]["day"]["maxtemp_c"]);
   }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'tem= $temp  maxTemp =$maxtemp  condition =$condition  data =$date';
+  }
 }

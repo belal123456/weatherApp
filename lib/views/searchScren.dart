@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:weather/models/weather_Model.dart';
 import 'package:weather/services.dart/weatherService.dart';
 
 class Searchscren extends StatelessWidget {
   String? cityName;
+  Searchscren({this.update});
+  VoidCallback? update;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +23,15 @@ class Searchscren extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: Center(
           child: TextField(
-            onSubmitted: (Data1) {
+            onSubmitted: (Data1) async {
               cityName = Data1;
               WeatherService service = WeatherService();
-              service.getWeather(cityName: cityName!);
+
+              Weathermodel weather =
+                  await service.getWeather(cityName: cityName!);
+              update!();
+
+              Navigator.pop(context);
             },
             decoration: InputDecoration(
                 label: const Text("city"),
