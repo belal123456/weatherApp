@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:weather/models/weather_Model.dart';
+import 'package:weather/providers/weatherProvider.dart';
 
 class dataPage extends StatelessWidget {
-  const dataPage({super.key});
+  Weathermodel? data;
 
   @override
   Widget build(BuildContext context) {
+    data = Provider.of<Weatherprovider>(context).Weathermode;
     return Container(
       color: Colors.amber[300],
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -18,12 +22,12 @@ class dataPage extends StatelessWidget {
           ListTile(
             title: Center(
                 child: Text(
-              "cairo",
+              data?.name ?? "",
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
             )),
             subtitle: Center(
                 child: Text(
-              "updated :- 12:12Pm",
+              data?.date ?? "",
               style: TextStyle(fontSize: 24),
             )),
           ),
@@ -38,7 +42,7 @@ class dataPage extends StatelessWidget {
                   "images/snow.png",
                 )),
                 Text(
-                  "30",
+                  data?.temp ?? "",
                   style: TextStyle(fontSize: 32),
                 ),
                 SizedBox(
@@ -47,11 +51,11 @@ class dataPage extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "bbb",
+                      data?.humidity ?? "",
                       style: TextStyle(fontSize: 24),
                     ),
                     Text(
-                      "sss",
+                      data?.maxTemp ?? "",
                       style: TextStyle(fontSize: 24),
                     )
                   ],
@@ -61,7 +65,7 @@ class dataPage extends StatelessWidget {
           ),
           Spacer(),
           Text(
-            "clear",
+            data?.condition ?? "",
             style: TextStyle(fontSize: 40),
           ),
           Spacer(

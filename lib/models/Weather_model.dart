@@ -1,12 +1,14 @@
 class Weathermodel {
   final String date;
-  final double temp;
+  final String temp;
   final String condition;
-  final int humidity;
-  final double maxTemp;
+  final String humidity;
+  final String maxTemp;
   final String icon;
+  final String name;
 
   Weathermodel({
+    required this.name,
     required this.date,
     required this.icon,
     required this.temp,
@@ -17,12 +19,15 @@ class Weathermodel {
 
   factory Weathermodel.fromJson(Map<String, dynamic> jsonData) {
     return Weathermodel(
+      name: jsonData['location']['name'],
       date: jsonData['location']['localtime'],
       icon: jsonData["forecast"]["forecastday"][0]["day"]["condition"]["icon"],
-      temp: jsonData["forecast"]["forecastday"][0]["day"]["avgtemp_c"],
+      temp:
+          jsonData["forecast"]["forecastday"][0]["day"]["avgtemp_c"].toString(),
       condition: jsonData["current"]["condition"]["text"],
-      humidity: jsonData["current"]["humidity"],
-      maxTemp: jsonData["forecast"]["forecastday"][0]["day"]["maxtemp_c"],
+      humidity: jsonData["current"]["humidity"].toString(),
+      maxTemp:
+          jsonData["forecast"]["forecastday"][0]["day"]["maxtemp_c"].toString(),
     );
   }
 }
