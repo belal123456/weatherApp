@@ -10,8 +10,10 @@ class dataPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     data = Provider.of<Weatherprovider>(context).Weathermode;
+    final String iconPAtch = data!.icon;
+
     return Container(
-      color: Colors.amber[300],
+      color: Colors.blue[300],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -37,10 +39,7 @@ class dataPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image(
-                    image: AssetImage(
-                  "images/snow.png",
-                )),
+                Image.network('http:' + iconPAtch),
                 Text(
                   data?.temp ?? "",
                   style: TextStyle(fontSize: 32),
