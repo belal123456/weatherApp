@@ -26,7 +26,6 @@ class Weathermodel {
   }
   @override
   String toString() {
-    // TODO: implement toString
     return 'tem= $temp  maxTemp =$maxtemp  condition =$condition  data =$date';
   }
 }

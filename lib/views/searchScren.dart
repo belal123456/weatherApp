@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:weather/models/weather_Model.dart';
+import 'package:provider/provider.dart';
+import 'package:weather/models/weathermodel.dart';
+import 'package:weather/providers/weatherProvider.dart';
 import 'package:weather/services.dart/weatherService.dart';
 
 class Searchscren extends StatelessWidget {
@@ -29,6 +31,8 @@ class Searchscren extends StatelessWidget {
 
               Weathermodel weather =
                   await service.getWeather(cityName: cityName!);
+              Provider.of<Weatherprovider>(context).weatherdata = weather;
+
               update!();
 
               Navigator.pop(context);

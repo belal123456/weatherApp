@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:weather/models/weather_Model.dart';
+import 'package:provider/provider.dart';
+import 'package:weather/models/weathermodel.dart';
+import 'package:weather/providers/weatherProvider.dart';
 import 'package:weather/views/pagesWithData.dart';
 import 'package:weather/views/searchScren.dart';
 
@@ -34,7 +36,7 @@ class _HomescreenState extends State<Homescreen> {
             ),
           ),
         ),
-        body: weatherdata == null
+        body: Provider.of<Weatherprovider>(context).weatherdata == null
             ? ListTile(
                 title: Center(
                   child: Column(
