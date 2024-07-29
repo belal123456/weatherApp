@@ -10,7 +10,7 @@ class Searchscren extends StatelessWidget {
   String? cityName;
   Searchscren({this.update});
   VoidCallback? update;
-
+  Weathermodel? weatherdata;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +31,8 @@ class Searchscren extends StatelessWidget {
 
               Weathermodel weather =
                   await service.getWeather(cityName: cityName!);
-              Provider.of<Weatherprovider>(context).weatherdata = weather;
-
-              update!();
+              Provider.of<Weatherprovider>(context, listen: false).weathermode =
+                  weather;
 
               Navigator.pop(context);
             },

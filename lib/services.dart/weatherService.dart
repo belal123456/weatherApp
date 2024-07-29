@@ -12,8 +12,8 @@ class WeatherService {
     http.Response response = await http.get(url);
     Map<String, dynamic> jsonData = jsonDecode(response.body);
 
-    Weathermodel model = Weathermodel.fromJson(jsonData);
+    Weathermodel weatherr = Weathermodel.fromJson(jsonData);
 
-    return model;
+    return weatherr;
   }
 }

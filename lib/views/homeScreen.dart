@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/models/weathermodel.dart';
+
 import 'package:weather/providers/weatherProvider.dart';
 import 'package:weather/views/pagesWithData.dart';
 import 'package:weather/views/searchScren.dart';
@@ -26,17 +28,25 @@ class _HomescreenState extends State<Homescreen> {
         appBar: AppBar(
           backgroundColor:
               weatherdata != null ? Colors.black : Colors.blue[300],
-          title: const Center(
-            child: Text(
-              "weather",
-              style: TextStyle(
-                fontSize: 32,
-                color: Colors.white,
+          title: Center(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Searchscren();
+                }));
+              },
+              child: const Text(
+                "weather",
+                style: TextStyle(
+                  fontSize: 32,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
         ),
-        body: Provider.of<Weatherprovider>(context).weatherdata == null
+        body: Provider.of<Weatherprovider>(context, listen: true).Weathermode ==
+                null
             ? ListTile(
                 title: Center(
                   child: Column(
