@@ -13,7 +13,7 @@ class dataPage extends StatelessWidget {
     final String iconPAtch = data!.icon;
 
     return Container(
-      color: Colors.blue[300],
+      color: Colors.amber[300],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -28,7 +28,7 @@ class _HomescreenState extends State<Homescreen> {
         backgroundColor: Color(0xFF333333),
         appBar: AppBar(
           backgroundColor:
-              weatherdata != null ? Colors.black : Colors.blue[300],
+              weatherdata == null ? Colors.black : Colors.blue[300],
           title: Center(
             child: GestureDetector(
               onTap: () {
